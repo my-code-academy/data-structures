@@ -53,7 +53,7 @@ if (hasNegativeElements(inputArray)) {
 } else if (hasDuplicates(inputArray)) {
     return new Error('invalid input: Input has duplicate elements');
 }
-let resultArray = [-1, -1, -1, -1, -1, -1, -1, -1];
+let resultArray = Array(inputArray.length).fill(-1);
 
 let minElementIndex = -1, maxElementIndex = -1;
 
