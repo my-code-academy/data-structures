@@ -75,7 +75,7 @@ for (let i = 0; i < inputArray.length; i++) {
     } else {
         let pos = findPositionToInsert(resultArray, currentNumber);
         if (pos <= maxElementIndex) {
-            if (maxElementIndex - pos < inputArray.length - minElementIndex + pos) {
+            if (maxElementIndex - pos <  pos) {
                 resultArray = insertAtLeftPosition(resultArray, currentNumber, maxElementIndex);
                 maxElementIndex++;
             } else {
@@ -87,6 +87,20 @@ for (let i = 0; i < inputArray.length; i++) {
                 }
                 resultArray = rotateRightFromPosition(resultArray, pos);
                 resultArray.unshift(currentNumber);
+            }
+        } else {
+            if (pos - minElementIndex < inputArray.length - pos) {
+                resultArray = insertAtRightPosition(resultArray, currentNumber, minElementIndex);
+                minElementIndex--;
+            } else {
+                for (let j = 0; j < pos; j++) {
+                    let index = resultArray.indexOf(-1);
+                    if (index > -1) {
+                        resultArray.splice(index, 1);
+                    }
+                }
+                resultArray = rotateLeftFromPosition(resultArray, pos);
+                resultArray.push(currentNumber);
             }
         }
     }
